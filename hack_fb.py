@@ -187,7 +187,7 @@ def menu_hack():
     print '\x1b[1;97m\xe2\x95\x94' + 40 * '\xe2\x95\x90'
     print '\xe2\x95\x91\x1b[1;91m[\x1b[1;96m\xe2\x9c\x93\x1b[1;91m]\x1b[1;97m Nama Facebook \x1b[1;91m: \x1b[1;92m' + nama
     print '\x1b[1;97m\xe2\x95\x9a' + 40 * '\xe2\x95\x90'
-    print '\x1b[1;37;40m1. Multi Bruteforce Facebook'
+    print '\x1b[1;37;40m1. Mulai Hack'
     print '\x1b[1;37;40m2. Ambil id/email/hp'
     print '\x1b[1;37;40m3. LogOut'
     print '\x1b[1;31;40m0. Keluar'
@@ -310,7 +310,7 @@ def hasil():
     print
     print '\x1b[31m[x] Gagal \x1b[1;97m--> ' + str(len(gagal))
     tik_ulang()
-    time.sleep(5)    
+    time.sleep(1)    
     restart()
     
     
