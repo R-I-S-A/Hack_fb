@@ -203,7 +203,7 @@ def hack_pilih():
     else:
         if hack == '1':
             crack()
-            hadil()
+            hasil()
         else:
             if hack == '2':
                 grab()
